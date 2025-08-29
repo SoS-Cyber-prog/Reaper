@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reaper Database</title>
-  <!-- Website Icon (replace link below with your own image URL later) -->
   <link rel="icon" href="https://www.svgrepo.com/show/510444/logo-reaper.svg" type="image/png">
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #000; /* black background */
+      background: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      overflow: hidden;
+      overflow: auto; /* allow scroll on very small screens */
       color: #fff;
     }
 
-    /* subtle animated glowing background */
+    /* glowing background */
     body::before {
       content: "";
       position: absolute;
@@ -42,7 +42,8 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 25px rgba(255,0,0,0.8);
-      width: 320px;
+      width: 90%;
+      max-width: 400px;
       text-align: center;
       z-index: 1;
     }
@@ -51,23 +52,25 @@
       color: #ff3333;
       text-shadow: 0 0 10px #ff0000;
       margin-bottom: 20px;
+      font-size: 1.5rem;
     }
 
     input {
-      width: 90%;
-      padding: 10px;
+      width: 100%;
+      padding: 12px;
       margin: 10px 0;
       border: none;
       border-radius: 6px;
       outline: none;
-      font-size: 14px;
+      font-size: 1rem;
       background: #222;
       color: #fff;
       box-shadow: 0 0 10px rgba(255,0,0,0.5) inset;
     }
 
     button {
-      padding: 12px 20px;
+      width: 100%;
+      padding: 12px;
       border: none;
       background: #ff0000;
       color: white;
@@ -77,6 +80,7 @@
       text-transform: uppercase;
       box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
       transition: 0.3s;
+      font-size: 1rem;
     }
 
     button:hover {
@@ -97,19 +101,24 @@
       position: absolute;
       top: 15px;
       left: 15px;
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 480px) {
+      .box h2 { font-size: 1.2rem; }
+      .corner-icon { width: 28px; height: 28px; }
     }
   </style>
 </head>
 <body>
-  <!-- Corner icon (replace src with your image link) -->
+  <!-- Corner icon -->
   <img class="corner-icon" src="https://i.redd.it/6isihfajc73a1.png" alt="Icon">
 
   <div class="box">
     <h2>Reaper Database</h2>
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
     <div id="loading">Connecting to Gesamtschule Wanne-Eickel Server...</div>
   </div>
@@ -120,7 +129,7 @@
       const pass = document.getElementById("password").value;
       const loading = document.getElementById("loading");
 
-      // Allowed accounts
+      // Allowed accounts (kept exactly as you had them)
       const accounts = {
         "m.qaiser@ge-wan.herner.schule": "iwasusingts?",
         "m.gitter@ge-wan.herner.schule": "Haus3456"
